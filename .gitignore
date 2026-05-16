@@ -1,4 +1,3 @@
-build/
 .DS_Store
 
 # LaTeX leftovers (in case anything escapes the .build dir)
