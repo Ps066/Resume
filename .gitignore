@@ -1,0 +1,13 @@
+build/
+.DS_Store
+
+# LaTeX leftovers (in case anything escapes the .build dir)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc

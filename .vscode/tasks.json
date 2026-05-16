@@ -1,0 +1,107 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build current resume (mac)",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "${workspaceFolder}/scripts/build.sh",
+        "${fileBasenameNoExtension}"
+      ],
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "echo": true, "reveal": "silent", "focus": false, "panel": "shared", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build current resume (windows)",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy", "Bypass",
+        "-File", "${workspaceFolder}\\scripts\\build.ps1",
+        "${fileBasenameNoExtension}"
+      ],
+      "group": "build",
+      "presentation": { "echo": true, "reveal": "silent", "focus": false, "panel": "shared", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build ALL resumes (mac)",
+      "type": "shell",
+      "command": "bash",
+      "args": ["${workspaceFolder}/scripts/build.sh"],
+      "presentation": { "echo": true, "reveal": "always", "focus": false, "panel": "shared", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build ALL resumes (windows)",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy", "Bypass",
+        "-File", "${workspaceFolder}\\scripts\\build.ps1"
+      ],
+      "presentation": { "echo": true, "reveal": "always", "focus": false, "panel": "shared", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Preview current PDF (mac)",
+      "type": "shell",
+      "command": "open",
+      "args": ["${workspaceFolder}/build/${fileBasenameNoExtension}.pdf"],
+      "presentation": { "reveal": "never", "panel": "shared" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Preview current PDF (windows)",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "Start-Process '${workspaceFolder}\\build\\${fileBasenameNoExtension}.pdf'"
+      ],
+      "presentation": { "reveal": "never", "panel": "shared" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build & Preview current (mac)",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Build current resume (mac)", "Preview current PDF (mac)"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Build & Preview current (windows)",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Build current resume (windows)", "Preview current PDF (windows)"],
+      "problemMatcher": []
+    },
+    {
+      "label": "New resume from template (mac)",
+      "type": "shell",
+      "command": "bash",
+      "args": ["${workspaceFolder}/scripts/new-resume.sh", "${input:resumeName}"],
+      "presentation": { "echo": true, "reveal": "always", "panel": "shared", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "New resume from template (windows)",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy", "Bypass",
+        "-File", "${workspaceFolder}\\scripts\\new-resume.ps1",
+        "${input:resumeName}"
+      ],
+      "presentation": { "echo": true, "reveal": "always", "panel": "shared", "clear": true },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "resumeName",
+      "type": "promptString",
+      "description": "New resume name (no extension), e.g. backend-engineer"
+    }
+  ]
+}

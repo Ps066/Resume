@@ -1,0 +1,62 @@
+{
+  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
+  "latex-workshop.latex.autoBuild.run": "onFileChange",
+  "latex-workshop.latex.autoBuild.interval": 700,
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.invertMode.enabled": "never",
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  "latex-workshop.message.error.show": true,
+  "latex-workshop.message.warning.show": false,
+  "latex-workshop.chktex.enabled": false,
+  "latex-workshop.latex.recipe.default": "pdflatex",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "pdflatex",
+      "tools": ["pdflatex"]
+    },
+    {
+      "name": "pdflatex x2",
+      "tools": ["pdflatex", "pdflatex"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-output-directory=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    }
+  ],
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.latex.clean.method": "glob",
+  "latex-workshop.latex.clean.fileTypes": [
+    "%OUTDIR%/*.aux",
+    "%OUTDIR%/*.bbl",
+    "%OUTDIR%/*.blg",
+    "%OUTDIR%/*.idx",
+    "%OUTDIR%/*.ind",
+    "%OUTDIR%/*.lof",
+    "%OUTDIR%/*.lot",
+    "%OUTDIR%/*.out",
+    "%OUTDIR%/*.toc",
+    "%OUTDIR%/*.fls",
+    "%OUTDIR%/*.log",
+    "%OUTDIR%/*.fdb_latexmk"
+  ],
+  "files.exclude": {
+    "**/.DS_Store": true
+  },
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500,
+  "editor.wordWrap": "on",
+  "[latex]": {
+    "editor.formatOnSave": false,
+    "editor.suggest.showSnippets": true
+  }
+}
